@@ -1,6 +1,10 @@
+import Vue from 'vue'
+
 export const state = () => ({
-	choosing: false,
+	currentCard: null,
 	lastCard: null,
+
+	mismatch: [],
 
 	pairs: {
 		apple: false,
@@ -15,24 +19,28 @@ export const state = () => ({
 	}
 })
 
+const alarm = time => new Promise( resolve => setTimeout(resolve, time) )
+
 export const mutations = {
 	selectCard ( state, { name, key } ) {
-		if ( name === state.lastCard.name ) {
-			Vue.set(state, 'choosing', false)
+		if ( state.lastCard && (name === state.lastCard.name) && (key !== state.lastCard.key) ) {
+			Vue.set(state, 'currentCard', null)
 			Vue.set(state, 'lastCard', null)
-			Vue.set(state.pairs, card, true)
-		} else if ( state.choosing === true ) {
-			Vue.set(state, 'choosing', false)
+			Vue.set(state.pairs, name, true)
+		} else if ( state.currentCard ) {
+			Vue.set(state, 'mismatch', [state.currentCard.key, key])
+			Vue.set(state, 'currentCard', null)
 			Vue.set(state, 'lastCard', null)
 		} else {
-			Vue.set(state, 'choosing', true)
+			Vue.set(state, 'currentCard', { name, key })
 			Vue.set(state, 'lastCard', { name, key })
 		}
 	}
 }
 
 export const actions = {
-    nuxtServerInit ({ commit }, { req }) {
-		
-    }
+	async selectCard (context, payload) {
+		await alarm(400)
+		context.commit('selectCard', payload)
+	}
 }

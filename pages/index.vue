@@ -14,9 +14,7 @@
 		justify-content: center
 		align-items: center
 		flex-wrap: wrap
-		padding: 1rem
 </style>
-
 
 <script>
 	import Card from '~/components/card'
