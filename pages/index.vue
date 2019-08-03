@@ -1,5 +1,7 @@
 <template lang="pug">
 	section
+		Score
+
 		Card(
 			v-for="card of cards"
 			:card="card"
@@ -17,11 +19,13 @@
 </style>
 
 <script>
-	import Card from '~/components/card'
+	import Card from '~/components/Card'
+	import Score from '~/components/Score'
 
 	export default {
 		components: {
-			Card
+			Card,
+			Score,
 		},
 
 		created () {

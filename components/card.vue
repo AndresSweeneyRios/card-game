@@ -19,6 +19,10 @@
 		},
 
 		computed: {
+			animating () {
+				return this.$store.state.animating
+			},
+
 			mismatch () {
 				return this.$store.state.mismatch
 			},
@@ -30,7 +34,6 @@
 
 		methods: {
 			async flip () {
-				if (this.match) return
 				Vue.set(this, 'show', false)
 				await alarm(200)
 				Vue.set(this, 'flipped', !this.flipped)
@@ -39,6 +42,7 @@
 			},
 
 			async select () {
+				if (this.match || this.animating) return
 				this.flip()
 				await alarm(100)
 				this.$store.dispatch('selectCard', this.card)
