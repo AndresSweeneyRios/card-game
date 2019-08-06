@@ -1,5 +1,5 @@
 <template lang="pug">
-	section
+	section.game
 		Score
 
 		Card(
@@ -11,7 +11,7 @@
 </template>
 
 <style lang="sass" scoped>
-	section
+	section.game
 		display: flex
 		justify-content: center
 		align-items: center
@@ -27,13 +27,30 @@
 			Card,
 			Score,
 		},
-
 		created () {
-			this.cards = Object.keys(this.$store.state.pairs).reduce(
-				(acc, name) => acc.concat(
-					{ name, key: name + 1 },
-					{ name, key: name + 2 }
-				), []
+			const shuffle = array => {
+				return array
+
+				let currentIndex = array.length, temporaryValue, randomIndex
+
+				while (0 !== currentIndex) {
+					randomIndex = Math.floor(Math.random() * currentIndex)
+					currentIndex -= 1
+					temporaryValue = array[currentIndex]
+					array[currentIndex] = array[randomIndex]
+					array[randomIndex] = temporaryValue
+				}
+
+				return array
+			}
+
+			this.cards = shuffle(
+				Object.keys(this.$store.state.pairs).reduce(
+					(acc, name) => acc.concat(
+						{ name, key: name + 1 },
+						{ name, key: name + 2 }
+					), []
+				)
 			)
 		}
 	}

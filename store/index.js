@@ -1,8 +1,7 @@
 import Vue from 'vue'
 
 export const state = () => ({
-	currentCard: null,
-	lastCard: null,
+	card: null,
 
 	animating: false,
 
@@ -27,10 +26,13 @@ const alarm = time => new Promise( resolve => setTimeout(resolve, time) )
 export const mutations = {
 	selectCard ( state, { name, key } ) {
 		if ( state.card ) {
-			if (name === state.card.name && key !== state.card.key) {
+			if (state.card.key === key && key !== '') {
+				state.card = null
+			} else if (name === state.card.name) {
 				state.pairs[name] = true
 			} else {
 				state.mismatch = [state.card.key, key]
+				state.mismatches++
 			}
 
 			state.card = null
@@ -47,8 +49,8 @@ export const mutations = {
 export const actions = {
 	async selectCard ( context, payload ) {
 		context.commit('setAnimating', true)
-		await alarm(400)
-		context.commit('selectCard', payload)
+		await alarm(600)
 		context.commit('setAnimating', false)
+		context.commit('selectCard', payload)
 	}
 }

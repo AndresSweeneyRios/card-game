@@ -1,10 +1,13 @@
 <template lang="pug">
 	section.card( :class="{ show, match }" @click="select" )
+		Back( v-show="!flipped" )
 		p( v-show="flipped" ) {{ card.name }}
 </template>
 
 <script>
 	import Vue from 'vue'
+	import { mapState } from 'vuex'
+	import Back from '~/components/Back'
 
 	const alarm = time => new Promise( resolve => setTimeout(resolve, time) )
 
@@ -18,18 +21,13 @@
 			}
 		},
 
+		components: {
+			Back
+		},
+
 		computed: {
-			animating () {
-				return this.$store.state.animating
-			},
-
-			mismatch () {
-				return this.$store.state.mismatch
-			},
-
-			match () {
-				return this.$store.state.pairs[this.card.name]
-			},
+			...mapState(['mismatch', 'pairs', 'animating']),
+			match: state => state.pairs[state.card.name]
 		},
 
 		methods: {
@@ -37,23 +35,20 @@
 				Vue.set(this, 'show', false)
 				await alarm(200)
 				Vue.set(this, 'flipped', !this.flipped)
-				await alarm(100)
+				await alarm(50)
 				Vue.set(this, 'show', true)
 			},
 
 			async select () {
 				if (this.match || this.animating) return
 				this.flip()
-				await alarm(100)
 				this.$store.dispatch('selectCard', this.card)
-				await this.$nextTick()
 			}
 		},
 
 		watch: {
 			mismatch (mismatch) {
-				if (mismatch.indexOf(this.card.key) > -1) 
-					this.flip()
+				if ( ~mismatch.indexOf(this.card.key) ) this.flip()
 			}
 		}
 	}
@@ -61,14 +56,26 @@
 
 <style lang="sass" scoped>
 	section.card
-		width: 10rem
-		height: 15rem
+		width: 20rem
+		height: 0
 		background-color: var(--foreground)
-		transition: transform 0.2s, opacity 0.2s
+		transition: transform 0.15s, opacity 0.15s
 		transform: scaleX(0)
-		margin: 1rem
+		border: 3px solid var(--background)
 		cursor: pointer
 		opacity: 1
+		position: relative
+		padding-top: 25rem
+		overflow: hidden
+		max-width: 45%
+
+		canvas
+			position: absolute
+			left: 0
+			height: 100%
+			image-rendering: pixelated
+			z-index: 4
+			top: 0
 
 		&.show
 			transform: scaleX(1)
@@ -76,6 +83,14 @@
 		p
 			user-select: none
 			pointer-events: none
+			position: absolute
+			height: 100%
+			width: 100%
+			top: 0
+			left: 0
+			display: flex
+			justify-content: center
+			align-items: center
 
 		&.flipped
 			transform: scaleX(1)

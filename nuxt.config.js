@@ -14,10 +14,6 @@ module.exports = {
       { hid: 'description', name: 'description', content: pkg.description },
       { name: 'theme-color', content: '#121212'}
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Montserrat|Source+Code+Pro:300' }
-    ]
   },
 
   /*
