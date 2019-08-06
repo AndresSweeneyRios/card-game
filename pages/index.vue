@@ -19,8 +19,8 @@
 </style>
 
 <script>
-	import Card from '~/components/Card'
-	import Score from '~/components/Score'
+	import Card from '@/components/Card'
+	import Score from '@/components/Score'
 
 	export default {
 		components: {

@@ -7,7 +7,7 @@
 <script>
 	import Vue from 'vue'
 	import { mapState } from 'vuex'
-	import Back from '~/components/Back'
+	import Back from '@/components/Back'
 
 	const alarm = time => new Promise( resolve => setTimeout(resolve, time) )
 
@@ -68,14 +68,6 @@
 		padding-top: 25rem
 		overflow: hidden
 		max-width: 45%
-
-		canvas
-			position: absolute
-			left: 0
-			height: 100%
-			image-rendering: pixelated
-			z-index: 4
-			top: 0
 
 		&.show
 			transform: scaleX(1)

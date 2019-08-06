@@ -31,7 +31,7 @@
 
 <script>
 	import Vue from 'vue'
-	import Clock from '~/components/Clock'
+	import Clock from '@/components/Clock'
 	import { mapState } from 'vuex'
 
 	export default {
