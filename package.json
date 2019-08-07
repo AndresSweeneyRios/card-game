@@ -6,7 +6,8 @@
     "dev": "cross-env NODE_ENV=development DISCORD=local nodemon server/index.js --watch server",
     "build": "nuxt build",
     "start": "cross-env NODE_ENV=production node server/index.js",
-	"generate": "nuxt build && cross-env nuxt generate"
+	"generate": "nuxt build && cross-env nuxt generate",
+	"nothing": "node ./nothing.js"
   },
   "repository": {
     "type": "git",
