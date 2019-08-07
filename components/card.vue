@@ -7,7 +7,7 @@
 <script>
 	import Vue from 'vue'
 	import { mapState } from 'vuex'
-	import Back from './back'
+	import Back from '~/components/back'
 
 	const alarm = time => new Promise( resolve => setTimeout(resolve, time) )
 

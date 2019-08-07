@@ -19,8 +19,8 @@
 </style>
 
 <script>
-	import Card from '../components/card'
-	import Score from '../components/score'
+	import Card from '~/components/card'
+	import Score from '~/components/score'
 
 	export default {
 		components: {
@@ -29,8 +29,6 @@
 		},
 		created () {
 			const shuffle = array => {
-				return array
-
 				let currentIndex = array.length, temporaryValue, randomIndex
 
 				while (0 !== currentIndex) {
