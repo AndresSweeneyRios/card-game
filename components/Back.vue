@@ -47,11 +47,11 @@
 <style lang="sass" scoped>
 	canvas
 		position: absolute
-		left: -50%
-		height: 300%
+		left: -10rem
+		height: 50rem
 		image-rendering: pixelated
 		z-index: 4
-		top: -50%
+		top: -10rem
 		
 
 </style>

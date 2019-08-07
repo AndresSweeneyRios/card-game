@@ -8,6 +8,8 @@
 			:key="card.key"
 		)
 
+		div.footer
+			a( href="https://github.com/Andr3wRiv3rs/card-game" ) GitHub
 </template>
 
 <style lang="sass" scoped>
@@ -16,6 +18,19 @@
 		justify-content: center
 		align-items: center
 		flex-wrap: wrap
+
+		.footer
+			display: flex
+			width: 100%
+			height: 4rem
+			align-items: center
+			justify-content: center
+
+			a
+				opacity: 0.8
+
+				&:hover
+					opacity: 1
 </style>
 
 <script>

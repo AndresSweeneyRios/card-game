@@ -12,7 +12,8 @@ module.exports = {
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: pkg.description },
-      { name: 'theme-color', content: '#121212'}
+	  { name: 'theme-color', content: '#121212'},
+	  { href: "https://fonts.googleapis.com/css?family=Ubuntu+Mono&display=swap", rel: "stylesheet" }
     ],
   },
 

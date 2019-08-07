@@ -17,7 +17,7 @@
 			padding: 1rem
 			font-size: 1.3rem
 			margin: 3px
-			font-weight: 600
+			font-weight: 200
 			font-variant-numeric: tabular-nums
 			letter-spacing: 0.5px
 
