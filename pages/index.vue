@@ -19,8 +19,8 @@
 </style>
 
 <script>
-	import Card from '../components/Card.vue'
-	import Score from '../components/Score.vue'
+	import Card from '../components/card'
+	import Score from '../components/score'
 
 	export default {
 		components: {

@@ -1,13 +1,13 @@
 <template lang="pug">
 	section.card( :class="{ show, match }" @click="select" )
-		img( v-show="flipped" :src="require(`~/assets/food/${ 'apple' || card.name }.png`)" )
-		//- Back( v-show="!flipped" )
+		img( v-show="flipped" :src="require(`~/assets/food/${ card.name }.png`)" )
+		Back( v-show="!flipped" )
 </template>
 
 <script>
 	import Vue from 'vue'
 	import { mapState } from 'vuex'
-	// import Back from './Back.vue'
+	import Back from './back'
 
 	const alarm = time => new Promise( resolve => setTimeout(resolve, time) )
 
@@ -22,7 +22,7 @@
 		},
 
 		components: {
-			// Back
+			Back
 		},
 
 		computed: {
