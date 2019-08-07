@@ -56,7 +56,7 @@
 
 <style lang="sass" scoped>
 	section.card
-		width: 15rem
+		width: calc(100%/9)
 		height: 0
 		background-color: var(--foreground)
 		transition: transform 0.15s, opacity 0.15s
@@ -65,13 +65,23 @@
 		cursor: pointer
 		opacity: 1
 		position: relative
-		padding-top: 20rem
+		padding-top: 15vw
 		overflow: hidden
 		max-width: 45%
 		background-color: white
 		display: flex
 		justify-content: center
 		align-items: center
+
+		@media (max-width: 800px)
+			width: calc(100%/6)
+			padding-top: 20vw
+			border: 2px solid var(--background)
+
+		@media (max-width: 600px)
+			width: calc(100%/4)
+			padding-top: 30vw
+			border: 2px solid var(--background)
 
 		img
 			height: 60%

@@ -21,12 +21,13 @@
 			font-variant-numeric: tabular-nums
 			letter-spacing: 0.5px
 
-		@media (max-width: 800px)
+		@media (max-width: 600px)
 			& > *
-				padding: 0 1rem
+				padding: 0 0.8rem
+				font-size: 1.1rem
 
 			flex-direction: column
-			padding: 2rem 0
+			padding: 1.2rem 0
 </style>
 
 <script>
