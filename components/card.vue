@@ -1,13 +1,13 @@
 <template lang="pug">
 	section.card( :class="{ show, match }" @click="select" )
-		Back( v-show="!flipped" )
-		p( v-show="flipped" ) {{ card.name }}
+		img( v-show="flipped" :src="require(`~/assets/food/${ 'apple' || card.name }.png`)" )
+		//- Back( v-show="!flipped" )
 </template>
 
 <script>
 	import Vue from 'vue'
 	import { mapState } from 'vuex'
-	import Back from './Back.vue'
+	// import Back from './Back.vue'
 
 	const alarm = time => new Promise( resolve => setTimeout(resolve, time) )
 
@@ -22,7 +22,7 @@
 		},
 
 		components: {
-			Back
+			// Back
 		},
 
 		computed: {
@@ -68,6 +68,15 @@
 		padding-top: 25rem
 		overflow: hidden
 		max-width: 45%
+		background-color: white
+		display: flex
+		justify-content: center
+		align-items: center
+
+		img
+			height: 60%
+			position: absolute
+			top: 21%
 
 		&.show
 			transform: scaleX(1)
