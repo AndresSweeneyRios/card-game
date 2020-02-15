@@ -44,7 +44,7 @@
     "pug": "2.0.3",
     "pug-plain-loader": "^1.0.0",
     "sass-loader": "^7.1.0",
-    "yarn": "^1.17.3"
+    "yarn": "^1.22.0"
   },
   "config": {
     "nuxt": {
